@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.precent{ border: 1px solid gold;}
+		</style>
+	</head>
+	<body>
+		<div class="precent">
+			<canvas id="can" width="80" height="80">
+				
+			</canvas>
+		</div>
+		<script>
+			var can=document.getElementById("can");
+			var ctx=can.getContext("2d");
+			ctx.imageSmoothingEnabled=true;
+			for (var i=1;i<=80;i++) {
+				(function(){
+					var j=i;
+					setTimeout(function(){
+						drawPre(j);
+					},j*20)
+				})()
+			}
+			function drawbase(){
+				ctx.beginPath();
+				ctx.lineWidth=2;
+				ctx.strokeStyle="#E0E0E0";
+				ctx.arc(40,40,38,0,Math.PI*2);
+				ctx.stroke();
+			}
+			
+			function drawPre(pre){
+							// x,y,width,height
+				ctx.clearRect(0,0,80,80);
+				// 画灰色的圆
+				drawbase();
+				ctx.beginPath();
+				ctx.lineWidth=2;
+				ctx.strokeStyle="red";
+				ctx.lineCap="square";
+				ctx.arc(40,40,38,0,Math.PI*2/100*pre);
+				ctx.stroke();
+			}
+			
+			
+		</script>
+	</body>
+</html>
